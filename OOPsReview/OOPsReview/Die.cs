@@ -81,24 +81,24 @@ namespace OOPsReview
         }
 
         //Auto Implemented Property 
-        //public
-        //it has a datatype, name
-        //DOES NOT HAVE an internal data member that you can DIRECTLY access
-        //the system will create, internally, a data storage area of the appropriate datatype and manage the area
-        //the only way to access the data of an auto-implemented property is via the property
-        //usually used when there is no need for any internal validation or other property logic
-        public int FaceValue { get; set; }
+            //public
+            //it has a datatype, name
+            //DOES NOT HAVE an internal data member that you can DIRECTLY access
+            //the system will create, internally, a data storage area of the appropriate datatype and manage the area
+            //the only way to access the data of an auto-implemented property is via the property
+            //usually used when there is no need for any internal validation or other property logic
+        public int FaceValue { get; private set; }
 
         //Constructors
-        //optional; if not supplied the system default constructor is used which will assign a system value to each data member/auto implemented property according to it's datatype
-        //you can have any number of constructors within your class
-        //as soon as you code a constructor, your program is responsible for ALL constructors
+            //optional; if not supplied the system default constructor is used which will assign a system value to each data member/auto implemented property according to it's datatype
+            //you can have any number of constructors within your class
+            //as soon as you code a constructor, your program is responsible for ALL constructors
 
         //Syntax: public classname([list of parameters]) {. . . . . .}
 
         //TYPICAL CONSTRUCTORS:
         //Default Constructor
-        //This is similar to the system default constructor (will replace it)
+            //This is similar to the system default constructor (will replace it)
         public Die()
         {
             //you could leave this constructor empty and the system would assign the normal default value to your data members and auto implemented properties

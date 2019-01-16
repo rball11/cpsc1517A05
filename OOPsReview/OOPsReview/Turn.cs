@@ -8,31 +8,30 @@ namespace OOPsReview
 {
     class Turn
     {
-        private int _PlayerOneRoll;
+        private int _Player1Roll;
 
-        public int PlayerOneRoll
+        public int Player1Roll
         {
             get
             {
-                return _PlayerOneRoll;
+                return _Player1Roll;
             }
             set
             {
-                _PlayerOneRoll = value;
+                _Player1Roll = value;
             }
         }
 
-        public int PlayerTwoRoll { get; set; }
+        public int Player2Roll { get; set; }
 
         public Turn()
         {
-
         }
 
-        public Turn(int playerOne, int playerTwo)
+        public Turn(int player1, int player2)
         {
-            PlayerOneRoll = playerOne;
-            PlayerTwoRoll = playerTwo;
+            Player1Roll = player1;
+            Player2Roll = player2;
         }
 
         //methods
