@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "TextBoxes";
+
+    //the processing of this page is PHYSICALLY done from TOP to BOTTOM
+
+    //capture the incoming "post" method data
+    //all data coming in will be strings
+    var leftside = Request.Form["inputleft"];
+    var rightside = Request.Form["inputright"];
+    var thebutton = Request.Form["formbutton"];
+}
+
+@section banner{
+    <h1>Text Boxes</h1>
+}
+
+<!--this HTML will appear in the RenderBody of the layout page-->
+
+@if (IsPost)
+{
+    <p>You have sent this form back. IsPost is true</p>
+}
+else
+{
+    <p>You have not yet sent this form back. IsPost is false</p>
+}
+
+    <form id="theform" method="post">
+        <div class="col-md-6">
+            <label for="inputleft">Left</label>
+            <input type="text" id="inputleft" name="inputleft" placeholder="Enter your name" value="@leftside" />
+            <button type="submit" id="formbutton" name="formbutton" class="btn" value="left">Press Left</button>
+        </div>
+        <div class="col-md-6">
+            <label for="inputright">Right</label>
+            <input type="text" id="inputright" name="inputright" placeholder="Enter your favorite color" />
+            <button type="submit" id="formbutton" name="formbutton" class="btn" value="right">Press Right</button>
+        </div>
+    </form>
+
