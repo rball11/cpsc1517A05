@@ -1,8 +1,35 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
+    Page.Title = "CheckBoxes";
+}
+
+@section head{
+    <link href="~/Content/MyCustomStyles.css" rel="stylesheet" />
 }
 
 @section banner{
     <h1>Check Boxes</h1>
 }
 
+    <form id="theform" method="post">
+        <div class="row">
+            <div class="col-md-offset-2">
+                <label id="gamegroup">
+                    Select your favorite gaming platforms
+                </label><br />
+                <input type="checkbox" id="gamegroup" name="gamegroup" value="PC" />PC<br />
+                <input type="checkbox" id="gamegroup" name="gamegroup" value="PS4" />Playstation 4<br />
+                <input type="checkbox" id="gamegroup" name="gamegroup" value="XB1" />Xbox One<br />
+                <input type="checkbox" id="gamegroup" name="gamegroup" value="SWITCH" />Nintendo Switch<br />
+                <input type="checkbox" id="gamegroup" name="gamegroup" value="MOBILE" />Mobile<br />
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-3">
+                <button type="submit" class="btn btn-primary" id="formbutton" name="formbutton" value="submit">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
