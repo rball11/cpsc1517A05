@@ -6,6 +6,10 @@
 
     //capture the incoming "post" method data
     //all data coming in will be strings
+    //if a form control does NOT exist, the value null is returned
+    //if a form control does exist, then the associated data is returned
+    //for a textbox control, the data is the entered data
+    //for a form submit button, the data is the value assigned to the value parameter
     var leftside = Request.Form["inputleft"];
     var rightside = Request.Form["inputright"];
     var thebutton = Request.Form["formbutton"];
@@ -19,7 +23,20 @@
 
 @if (IsPost)
 {
-    <p>You have sent this form back. IsPost is true</p>
+    //which form button was pressed?
+    if (thebutton.Equals("left"))
+    {
+        <p>Your name is @leftside</p>
+    }
+    else if (thebutton.Equals("right"))
+    {
+        <p>Your favorite color is @rightside</p>
+    }
+    else
+    {
+        leftside = null;
+        rightside = null;
+    }
 }
 else
 {
@@ -29,13 +46,30 @@ else
     <form id="theform" method="post">
         <div class="col-md-6">
             <label for="inputleft">Left</label>
-            <input type="text" id="inputleft" name="inputleft" placeholder="Enter your name" value="@leftside" />
-            <button type="submit" id="formbutton" name="formbutton" class="btn" value="left">Press Left</button>
+            <input type="text" id="inputleft" name="inputleft"
+                   placeholder="enter your name"
+                   value="@leftside" />
+            <button type="submit" id="formbutton" name="formbutton"
+                    class="btn" value="left">
+                Press Left
+            </button>
         </div>
         <div class="col-md-6">
             <label for="inputright">Right</label>
-            <input type="text" id="inputright" name="inputright" placeholder="Enter your favorite color" />
-            <button type="submit" id="formbutton" name="formbutton" class="btn" value="right">Press Right</button>
+            <input type="text" id="inputright" name="inputright"
+                   placeholder="enter your favourite color"
+                   value="@rightside" />
+            <button type="submit" id="formbutton" name="formbutton"
+                    class="btn" value="right">
+                Press Right
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-5">
+                <button type="submit" id="formbutton" name="formbutton" class="btn" value="reset">
+                    Reset On Server
+                </button>
+            </div>
         </div>
     </form>
 
