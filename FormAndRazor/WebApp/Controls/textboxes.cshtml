@@ -15,6 +15,10 @@
     var thebutton = Request.Form["formbutton"];
 }
 
+@section head{
+    <link href="~/Content/MyCustomStyles.css" rel="stylesheet" />
+}
+
 @section banner{
     <h1>Text Boxes</h1>
 }
@@ -43,33 +47,33 @@ else
     <p>You have not yet sent this form back. IsPost is false</p>
 }
 
-    <form id="theform" method="post">
-        <div class="col-md-6">
-            <label for="inputleft">Left</label>
-            <input type="text" id="inputleft" name="inputleft"
-                   placeholder="enter your name"
-                   value="@leftside" />
-            <button type="submit" id="formbutton" name="formbutton"
-                    class="btn" value="left">
-                Press Left
+<form id="theform" method="post">
+    <div class="col-md-6">
+        <label for="inputleft">Left</label>
+        <input type="text" id="inputleft" name="inputleft"
+               placeholder="enter your name"
+               value="@leftside" />
+        <button type="submit" id="formbutton" name="formbutton"
+                class="btn" value="left">
+            Press Left
+        </button>
+    </div>
+    <div class="col-md-6">
+        <label for="inputright">Right</label>
+        <input type="text" id="inputright" name="inputright"
+               placeholder="enter your favourite color"
+               value="@rightside" />
+        <button type="submit" id="formbutton" name="formbutton"
+                class="btn" value="right">
+            Press Right
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-5">
+            <button type="submit" id="formbutton" name="formbutton" class="btn" value="reset">
+                Reset On Server
             </button>
         </div>
-        <div class="col-md-6">
-            <label for="inputright">Right</label>
-            <input type="text" id="inputright" name="inputright"
-                   placeholder="enter your favourite color"
-                   value="@rightside" />
-            <button type="submit" id="formbutton" name="formbutton"
-                    class="btn" value="right">
-                Press Right
-            </button>
-        </div>
-        <div class="row">
-            <div class="col-md-offset-5">
-                <button type="submit" id="formbutton" name="formbutton" class="btn" value="reset">
-                    Reset On Server
-                </button>
-            </div>
-        </div>
-    </form>
+    </div>
+</form>
 
