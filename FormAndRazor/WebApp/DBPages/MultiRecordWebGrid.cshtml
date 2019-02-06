@@ -64,7 +64,8 @@
                 gridinstance.Column(columnName: "ProductName", header: "Product"),
                 gridinstance.Column(columnName: "UnitPrice", header: "$", format: (item) => item.UnitPrice.ToString("0.00")),
                 gridinstance.Column(columnName: "Discontinued", header: "Discontinued", format: @<input name="Discontinued" type="checkbox" value="@item.Discontinued" @(item.Discontinued == true ? "checked" : null) disabled="disabled"/>),
-                gridinstance.Column(columnName: "FakeDate", format: (item) => item.FakeDate.ToString("MMM dd, yyyy"))
+                gridinstance.Column(columnName: "FakeDate", format: (item) => item.FakeDate.ToString("MMM dd, yyyy")),
+                gridinstance.Column(header: "", format: @<text><a href="~/DBPages/WebGridDestination.cshtml?pid=@item.ProductID" onclick="return confirm('Are you sure you wish to view the product details of @item.ProductName')">View</a></text>)
                 ));
         }
     </div>
