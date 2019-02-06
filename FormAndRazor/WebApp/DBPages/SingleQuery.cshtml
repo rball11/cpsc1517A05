@@ -1,14 +1,16 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
-    Page.Title = "Single Query";
+    Page.Title = "DB - Single Query";
 
     var searcharg = Request.Form["searcharg"];
+    var thebutton = Request.Form["formButton"];
     var regionid = "";
     var description = "";
 
-    //remember on the first page pass, the form has NOT been displayed
+    //remember, on the 1st page pass, the form has NOT been displayed
     //searcharg will be null
-    //looking up a SQL table by primary key using a value of null and the search will not be successful 
+    //looking up a sql table by primary key using a value of null
+    //     will not be successful
     if (string.IsNullOrEmpty(searcharg))
     {
         searcharg = "0";
@@ -18,36 +20,65 @@
     var db = Database.Open("NWDB");
 
     //create the command to be executed on the database
-    //this command can be coded over multiple physical lines as a concatenation
+    //this command can be coded over multiple phyiscal line as a concatenation
     //values which will be passed with the command are coded with placeholders
     //a placeholder is @n where n is an index value
-    //on execution, the placeholder will be changed to the supplied argument value
-    var querycommand = "SELECT RegionID, RegionDescription"
-                       + "FROM Region"
-                       + "WHERE RegionID @0";
+    //on execution, the placehoder will be changed to the supplied argument value
+    var querycommand = "SELECT RegionID, RegionDescription "
+                    + "FROM Region "
+                    + "WHERE RegionID = @0";
 
-    //execute the command on the connected database
+    //execute the commmand on the connected database
     //capture the results of the execution
-    //.QuerySingle() used when one EXPECTS a single record to be returned
-    //.Query() used when one EXPECTS 0, 1 or more records to be returned
-    //.QueryValue() used when one EXPECTS a single value (NOT RECORD) to be returned
+    //.QuerySingle() used when one expects a single record to be returned
+    //.Query() used when one expects 0, 1 or more records to be returned
+    //.QueryValue() used when one expects a single value (NOT RECORD) to be returned
     var results = db.QuerySingle(querycommand, searcharg);
-}
 
-@section head{
-    <link href="~/Content/MyCustomStyles.css" rel="stylesheet" />
 }
-
 @section banner{
-    <h1>Single Query</h1>
+    <h1>DataBase: Single Query</h1>
 }
 
+@if (IsPost)
+{
+    if (thebutton.Equals("clear"))
+    {
+        searcharg = "0";
+        regionid = "";
+        description = "";
+
+    }
+    else
+    {
+        //test to see if any record was returned from the query
+        //if no record was returned then the results will be null
+        if (results == null)
+        {
+            <p><span style="color:blue">No data found for region id @searcharg</span></p>
+            regionid = "";
+            description = "";
+        }
+        else
+        {
+            //a record was actually retrieved
+            //set your output fields
+            //how does one access a data field on the
+            //     results data record(s)
+            //a) via index xxxx[columnindex]
+            //b) via the column title xxxx.columntitlename
+            <p><span style="color:green">Found</span></p>
+            regionid = results[0].ToString();
+            description = results.RegionDescription;
+        }
+    }
+}
 <form id="theform" method="post">
     <div class="row">
         <div class="col-md-4">
             <label for="searcharg">Enter Region ID:</label>
-            <input type="text" id="searcharg" name="searcharg"
-                   placeholder="enter region id"
+            <input type="number" id="searcharg" name="searcharg"
+                   placeholder="enter region id" step="1" min="0"
                    value="@searcharg" />
             <br />
             <button type="submit" id="formbutton" name="formbutton"
@@ -72,4 +103,3 @@
         </div>
     </div>
 </form>
-
