@@ -117,6 +117,8 @@
     <Content Include="DBPages\MultiRecordQuery.cshtml" />
     <Content Include="DBPages\MultiRecordWebGrid.cshtml" />
     <Content Include="DBPages\WebGridDestination.cshtml" />
+    <Content Include="DBPages\BootstrapTextAlignment.cshtml" />
+    <Content Include="DBPages\Insert.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
