@@ -16,14 +16,18 @@
     var discontinued = "";
 
     var db = Database.Open("NWDB");
+    //get the data for the dropdownlist
+    //this needs to be done prior using the collection
+    //   in the loop under the <Select> tag
     var catcommand = "SELECT CategoryID, CategoryName "
-        + "FROM Categories "
-        + "ORDER BY CategoryName";
-    var catresults = db.Query(catcommand);
+                    + "FROM Categories "
+                    + "ORDER BY CategoryName";
+    var catResults = db.Query(catcommand);
     var supcommand = "SELECT SupplierID, CompanyName "
-        + "FROM Suppliers "
-        + "ORDER BY CompanyName";
-    var supresults = db.Query(supcommand);
+                   + "FROM Suppliers "
+                   + "ORDER BY CompanyName";
+    var supResults = db.Query(supcommand);
+
 }
 @section head{
     <link href="~/Content/MyCustomStyles.css" rel="stylesheet" />
@@ -66,24 +70,21 @@
 
         //process incoming data
         //user friendly error handling
-
         try
         {
             //connect to db
-            //var db = Database.Open("NWDB");
+            //db = Database.Open("NWDB");
             //create sql insert command
             //note the number and position of placeholders for each supplied field
-
-
-            //code sql command here
-            var insertcommand = "INSERT INTO Products (ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued) "
-                        + "VALUES(@0,@1,@2,@3,@4,@5,@6,@7,@8)";
+            var insertcommand = "INSERT INTO Products (ProductName, SupplierID, CategoryID, "
+                        + "QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, "
+                        + "ReorderLevel, Discontinued) "
+                        + "VALUES(@0, @1, @2, @3, @4, @5, @6, @7, @8)";
 
             //execute the insert command
             //the method used is the .Execute(command string, list of placeholder variables)
             //ternary operator used for nullable fields
 
-            //code execution statement here
             db.Execute(insertcommand, productname,
                 selectedsupplier.Equals("0") ? null : selectedsupplier,
                 selectedcategory.Equals("0") ? null : selectedcategory,
@@ -94,6 +95,7 @@
                 string.IsNullOrEmpty(reorderlevel) ? null : reorderlevel,
                 0
                 );
+
 
             //use of bootstrap text positioning
             //success message
@@ -135,26 +137,46 @@
             <!-- the title attribute creates the tooltip for the control-->
             <input name="ProductName" id="ProductName" type="text" value="@productname"
                    title="Product Name." /><br />
-            <select id="supplierlist" name="supplierlist">
-                <option value="0">Select....</option>
-                <!-- loop code here -->
-                @foreach (var supitem in supresults)
+            <select id="SupplierID" name="SupplierID">
+                <option value="0">select ...</option>
+                <!--  loop code here-->
+                @foreach (var supitem in supResults)
                 {
-                    <option value="@supitem[0]">
-                        @supitem[1]
-                    </option>
+                    //maintain the selected item in the list
+                    //   between postings
+                    if (supitem[0].ToString() == selectedsupplier)
+                    {
+                        <option value="@supitem[0]" selected>
+                            @supitem[1]
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="@supitem[0]">
+                            @supitem[1]
+                        </option>
+                    }
                 }
-                </select><br />
-            <select id="categorylist" name="categorylist">
-                <option value="0">Select....</option>
-                <!-- loop code here -->
-                @foreach (var catitem in catresults)
+            </select><br />
+            <select id="CategoryID" name="CategoryID">
+                <option value="0">select ...</option>
+                <!--  loop code here-->
+                @foreach (var catitem in catResults)
                 {
-                    <option value="@catitem[0]">
-                        @catitem[1]
-                    </option>
+                    if (catitem[0].ToString() == selectedcategory)
+                    {
+                        <option value="@catitem[0]" selected>
+                            @catitem[1]
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="@catitem[0]">
+                            @catitem[1]
+                        </option>
+                    }
                 }
-                </select><br />
+            </select><br />
             <input name="QuantityPerUnit" id="QuantityPerUnit" type="text"
                    value="@quantityperunit" /><br />
             <input name="UnitPrice" id="UnitPrice" type="number" value="@unitprice"
