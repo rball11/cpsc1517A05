@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="" title=""  description="this is the root node which we ignore">
+    <siteMapNode url="~/Default.aspx" title="Home"  description="" />
+    <siteMapNode url="~/About.aspx" title="About"  description="" />
+    <siteMapNode url="~/Contact.aspx" title="Contact"  description="" />
+    <!-- drop down menu
+            A) create a pair of siteMapNode tags, open and close
+            B) place your submenu siteMapNodes between the open and close tags of (A)-->
+    <siteMapNode url="" title="Sample Pages" description="">
+      <siteMapNode url="~/SamplePages/FirstPage.aspx" title="Hello World"  description="" />
+      <siteMapNode url="~/SamplePages/BasicControls.aspx" title="Basic Controls"  description="" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

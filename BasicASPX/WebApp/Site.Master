@@ -49,12 +49,25 @@
                     <a class="navbar-brand" runat="server" href="~/">Application name</a>
                 </div>
                 <div class="navbar-collapse collapse">
+<%--                
+                this was the default given menu. to add a new item to this menu, simply add another li
+
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/SamplePages/FirstPage">Hello World</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
+    
+                this default menu will be replaced with a sitemap menu    --%>
+                    <asp:Menu ID="SiteNav" runat="server" DataSourceID="SiteMapDS" Orientation="Horizontal" 
+                         StaticDisplayLevels="1" 
+                         StaticMenuStyle-CssClass="nav navbar-nav" 
+                         StaticSelectedStyle-CssClass="active"
+                         DynamicMenuStyle-CssClass="dropdown-menu"
+                         IncludeStyleBlock="false"
+                         EnableTheming="false" EnableViewState="false"></asp:Menu>
+                    <asp:SiteMapDataSource ID="SiteMapDS" runat="server" ShowStartingNode="false" />
                 </div>
             </div>
         </div>
