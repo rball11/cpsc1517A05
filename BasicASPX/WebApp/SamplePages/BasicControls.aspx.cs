@@ -118,5 +118,38 @@ namespace WebApp.SamplePages
                     + " has a value of " + CollectionList.SelectedValue;
             }
         }
+
+        protected void SubmitList_Click(object sender, EventArgs e)
+        {
+            //the course choice will come from the dropdownlist
+            //the ddl has a prompt in the 1st physical line of the dropdown (index = 0)
+
+            //ensure that the user has selected a course
+            if (CollectionList.SelectedIndex == 0)
+            {
+                MessageLabel.Text = "Select a course to view";
+            }
+            else
+            {
+                string submitchoice = CollectionList.SelectedValue;
+
+                TextBoxNumberChoice.Text = submitchoice;
+
+                RadioButtonListChoice.SelectedValue = submitchoice;
+
+                if (submitchoice.Equals("2") || submitchoice.Equals("3"))
+                {
+                    CheckBoxChoice.Checked = true;
+                }
+                else
+                {
+                    CheckBoxChoice.Checked = false;
+                }
+
+                DisplayReadOnly.Text = CollectionList.SelectedItem.Text
+                + " at index " + CollectionList.SelectedIndex
+                + " has a value of " + CollectionList.SelectedValue;
+            }
+        }
     }
 }

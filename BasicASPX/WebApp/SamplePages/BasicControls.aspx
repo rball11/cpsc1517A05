@@ -6,7 +6,7 @@
             <td>
                 <asp:TextBox ID="TextBoxNumberChoice" runat="server" ToolTip="Enter a choice of 1 to 4"></asp:TextBox>
                 &nbsp;&nbsp;
-                <asp:Button ID="SubmitButtonChoice" runat="server" Text="Submit Choice" OnClick="SubmitButtonChoice_Click" />
+                <asp:Button ID="SubmitButtonChoice" runat="server" Text="Submit TextBox Choice" OnClick="SubmitButtonChoice_Click" />
             </td>
         </tr>
         <tr>
@@ -45,6 +45,8 @@
             <td>
                 <asp:DropDownList ID="CollectionList" runat="server">
                 </asp:DropDownList>
+                &nbsp;&nbsp;
+                <asp:Button ID="SubmitList" runat="server" Text="Submit Collection List" OnClick="SubmitList_Click" />
             </td>
         </tr>
         <tr>
