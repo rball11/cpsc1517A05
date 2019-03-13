@@ -11,14 +11,15 @@ namespace WebApp
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string StreetAddress1 { get; set; }
-        public string StreetAddress2 {
+        public string StreetAddress2
+        {
             get
             {
                 return _StreetAddress2;
             }
             set
             {
-                StreetAddress2 = _StreetAddress2;
+                _StreetAddress2 = string.IsNullOrEmpty(value) ? null : value;
             }
         }
         public string City { get; set; }
@@ -31,16 +32,18 @@ namespace WebApp
 
         }
 
-        public ContestClass(string firstname, string lastname, string streetaddress1, string streetaddress2, string city, string province, string postalcode, string email)
+        public ContestClass(string firstname, string lastname, string streetaddress1,
+            string streetaddress2, string city, string province, string postalcode,
+            string email)
         {
-            firstname = FirstName;
-            lastname = LastName;
-            streetaddress1 = StreetAddress1;
-            streetaddress2 = StreetAddress2;
-            city = City;
-            province = Province;
-            postalcode = PostalCode;
-            email = Email;
+            FirstName = firstname;
+            LastName = lastname;
+            StreetAddress1 = streetaddress1;
+            StreetAddress2 = streetaddress2;
+            City = city;
+            Province = province;
+            PostalCode = postalcode;
+            Email = email;
         }
     }
 }
