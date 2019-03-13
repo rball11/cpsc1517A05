@@ -49,13 +49,13 @@ namespace WebApp.SamplePages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldCity;
         
         /// <summary>
-        /// RequiredFieldProvince control.
+        /// RequiredFieldCheckAnswer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldProvince;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldCheckAnswer;
         
         /// <summary>
         /// RequiredFieldPostalCode control.
@@ -67,22 +67,13 @@ namespace WebApp.SamplePages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldPostalCode;
         
         /// <summary>
-        /// RequiredFieldEmail control.
+        /// RequiredFieldEmailAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldEmail;
-        
-        /// <summary>
-        /// RequiredFieldCheckAnswer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldCheckAnswer;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldEmailAddress;
         
         /// <summary>
         /// RangeStreetAddress2 control.
@@ -310,12 +301,12 @@ namespace WebApp.SamplePages {
         protected global::System.Web.UI.WebControls.Label Message;
         
         /// <summary>
-        /// EntryList control.
+        /// ContestEntryList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView EntryList;
+        protected global::System.Web.UI.WebControls.GridView ContestEntryList;
     }
 }
