@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{779AD424-AE15-46BB-A461-4ACC8A06C6C2}</ProjectGuid>
+    <ProjectGuid>{70096C04-A49C-4A13-9F53-5C83788EA59E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -271,11 +271,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NorthwindSystem.Data\NorthwindSystem.Data.csproj">
-      <Project>{00accde7-923f-42dc-8d85-99745f6c1c7a}</Project>
+      <Project>{b477cb71-9aa3-499a-b19f-642c731462e0}</Project>
       <Name>NorthwindSystem.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\NorthwindSystem\NorthwindSystem.csproj">
-      <Project>{ba04ea6e-0774-4bbf-9413-6a5f26eaa82f}</Project>
+      <Project>{31e07bcb-59ee-463f-9924-1ad7f77adf6b}</Project>
       <Name>NorthwindSystem</Name>
     </ProjectReference>
   </ItemGroup>
@@ -292,9 +292,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50448</DevelopmentServerPort>
+          <DevelopmentServerPort>53467</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50448/</IISUrl>
+          <IISUrl>http://localhost:53467/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

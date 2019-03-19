@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BA04EA6E-0774-4BBF-9413-6A5F26EAA82F}</ProjectGuid>
+    <ProjectGuid>{31E07BCB-59EE-463F-9924-1AD7F77ADF6B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NorthwindSystem</RootNamespace>
@@ -55,14 +55,14 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NorthwindSystem.Data\NorthwindSystem.Data.csproj">
-      <Project>{00accde7-923f-42dc-8d85-99745f6c1c7a}</Project>
+      <Project>{b477cb71-9aa3-499a-b19f-642c731462e0}</Project>
       <Name>NorthwindSystem.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
