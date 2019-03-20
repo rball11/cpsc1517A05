@@ -163,6 +163,7 @@
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="SamplePages\SimpleQueries.aspx" />
+    <Content Include="SamplePages\SqlProcQueries.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -232,6 +233,13 @@
     </Compile>
     <Compile Include="SamplePages\SimpleQueries.aspx.designer.cs">
       <DependentUpon>SimpleQueries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SqlProcQueries.aspx.cs">
+      <DependentUpon>SqlProcQueries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\SqlProcQueries.aspx.designer.cs">
+      <DependentUpon>SqlProcQueries.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
