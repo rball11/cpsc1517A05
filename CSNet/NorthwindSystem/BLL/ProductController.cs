@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 #region Additional Namespaces
 using NorthwindSystem.Data; //obtains the <T> devinitions
 using NorthwindSystem.DAL;  //obtains the context class
-using System.Data.SqlClient; //required for parameter used by SQL proc calls
+using System.Data.SqlClient;   //required for parameter used in Sql Proc calls
 #endregion
 
 namespace NorthwindSystem.BLL
@@ -54,19 +54,81 @@ namespace NorthwindSystem.BLL
             }
         }
 
-        //this method will query the DbSet<T> using a SQL procedure 
+        //this method will query the DbSet<T> using a sql
+        //   procedure
         //the query will be against a non primary key field
-        //the result will still be the complete entity <T> record
-        //we need to add a using clause to System.Data.Entity to our class
-        //input: categoryid
-        //output: List<Product> matching CategoryID
+        //the result return will still be the complete entity
+        //  <T> record
+        //we need to add a using clause to System.Data.SqlClient
+        //  to our class
+        //input: category id
+        //output: List<Product> matching category id
         public List<Product> Product_GetByCategory(int categoryid)
         {
             using (var context = new NorthwindContext())
             {
-                //generally datasets from DbSet calls returns as a datatype of IEnumerable<T>
-                //this IEnumerable<T> dataset will be turned into a list by using .ToList();
-                IEnumerable<Product> results = context.Database.SqlQuery<Product>("Products_GetByCategories @CategoryID", new SqlParameter("CategoryID",categoryid));
+                //generally datasets from DbSet calls return as
+                //   a datatype of IEnumerable<T>
+                //this IEnumerable<T> dataset will be turned into
+                //   a list by using .ToList()
+                IEnumerable<Product> results =
+                    context.Database.SqlQuery<Product>(
+                        "Products_GetByCategories @CategoryID",
+                        new SqlParameter("CategoryID",categoryid));
+                return results.ToList();
+            }
+        }
+
+        public List<Product> Products_GetByPartialProductName(string partialname)
+        {
+            using (var context = new NorthwindContext())
+            {
+                IEnumerable<Product> results =
+                    context.Database.SqlQuery<Product>("Products_GetByPartialProductName @PartialName",
+                                    new SqlParameter("PartialName", partialname));
+                return results.ToList();
+            }
+        }
+
+        public List<Product> Products_GetBySupplierPartialProductName(int supplierid, string partialproductname)
+        {
+            using (var context = new NorthwindContext())
+            {
+                //sometimes there may be a sql error that does not like the new SqlParameter()
+                //       coded directly in the SqlQuery call
+                //if this happens to you then code your parameters as shown below then
+                //       use the parm1 and parm2 in the SqlQuery call instead of the new....
+                //don't know why but its weird
+                //var parm1 = new SqlParameter("SupplierID", supplierid);
+                //var parm2 = new SqlParameter("PartialProductName", partialproductname);
+                IEnumerable<Product> results =
+                    context.Database.SqlQuery<Product>("Products_GetBySupplierPartialProductName @SupplierID, @PartialProductName",
+                                    new SqlParameter("SupplierID", supplierid),
+                                    new SqlParameter("PartialProductName", partialproductname));
+                return results.ToList();
+            }
+        }
+
+        public List<Product> Products_GetForSupplierCategory(int supplierid, int categoryid)
+        {
+            using (var context = new NorthwindContext())
+            {
+                IEnumerable<Product> results =
+                    context.Database.SqlQuery<Product>("Products_GetForSupplierCategory @SupplierID, @CategoryID",
+                                    new SqlParameter("SupplierID", supplierid),
+                                    new SqlParameter("CategoryID", categoryid));
+                return results.ToList();
+            }
+        }
+
+        public List<Product> Products_GetByCategoryAndName(int category, string partialname)
+        {
+            using (var context = new NorthwindContext())
+            {
+                IEnumerable<Product> results =
+                    context.Database.SqlQuery<Product>("Products_GetByCategoryAndName @CategoryID, @PartialName",
+                                    new SqlParameter("CategoryID", category),
+                                    new SqlParameter("PartialName", partialname));
                 return results.ToList();
             }
         }
