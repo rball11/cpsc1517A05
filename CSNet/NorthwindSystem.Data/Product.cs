@@ -34,11 +34,14 @@ namespace NorthwindSystem.Data
         // 3) a user supplied pkey on your sql table
         //    [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
 
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductID { get; set; }
+        [Required(ErrorMessage ="Product Name is a required field")]
+        [StringLength(40,ErrorMessage ="Product Name must be less than 40 characters")]
         public string ProductName { get; set; }
         public int? SupplierID { get; set; }
         public int? CategoryID { get; set; }
+        [StringLength(20, ErrorMessage = "Quantity Per Unit must be less than 40 characters")]
         public string QuantityPerUnit
         {
             get
@@ -47,9 +50,10 @@ namespace NorthwindSystem.Data
             }
             set
             {
-                _QuantityPerUnit = string.IsNullOrEmpty(value.Trim()) ? null : value;
+                _QuantityPerUnit = string.IsNullOrEmpty(value) ? null : value;
             }
         }
+        [Range(0.00,double.MaxValue,ErrorMessage ="Unit Price must be 0.00 or greater.")]
         public decimal? UnitPrice { get; set; }
         public Int16? UnitsInStock { get; set; }
         public Int16? UnitsOnOrder { get; set; }

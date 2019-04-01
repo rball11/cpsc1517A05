@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FilterSearches.aspx.cs" Inherits="WebApp.NorthwindPages.FilterSearches" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../Content/myStyles.css" rel="stylesheet" />
     <div class="page-header">
         <h1>Product: Filter MultiRecord Queries</h1>
     </div>
@@ -24,6 +24,14 @@
         </ItemTemplate>
     </asp:DataList>
     <br />
+<%--    <style>
+        table caption {
+            text-align: center;
+            background-color: #c0c0c0;
+            font-size: 78px;
+            font-weight:900;
+        }
+    </style>--%>
     <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal"
         StaticMenuItemStyle-CssClass="tab"
         Font-Size="Large" StaticSelectedStyle-CssClass="selectedTab"
@@ -51,7 +59,11 @@
                     </asp:DropDownList>
                     <br />
                     <br />
-                    <asp:GridView ID="ProductGridViewV1" runat="server">
+                    <asp:GridView ID="ProductGridViewV1" runat="server"
+                          Caption="hi there" CaptionAlign="Top">
+                        <EmptyDataTemplate>
+                            No data to show for selected category.
+                        </EmptyDataTemplate>
                     </asp:GridView>
                 </fieldset>
             </asp:View>
