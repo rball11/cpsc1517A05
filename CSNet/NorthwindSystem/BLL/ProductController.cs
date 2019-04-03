@@ -159,6 +159,49 @@ namespace NorthwindSystem.BLL
                 return item.ProductID;
             }
         }
+
+        //update will receive an instance <T> that contains the needed primary key values
+        //the method will return the number of rows affected
+        public int Product_Update(Product item)
+        {
+            using (var context = new NorthwindContext())
+            {
+                //sometimes you may have additional fields on your entity that track dates and times that the record was altered. these fields 
+                //should be set by the controller method and NOT be altered/set by the application user
+                //assume that our entity has a LastModified date
+                //item.LastModified = DateTime.Now;
+
+                //stage 
+                context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                //commit
+                //the value returned from the SaveChanges() is the number of rows affected by the update
+                return context.SaveChanges();
+            }
+        }
+
+        //only the primary key is needed for delete process
+        public int Product_Delete(int productid)
+        {
+            //physical delete (removal of the record from the database)            
+            using (var context = new NorthwindContext())
+            {
+                    ////find the record on the database
+                //var existing = context.Products.Find(productid);
+                    ////remove found record
+                //context.Products.Remove(existing);
+                    ////commit and return rows affected
+                //return context.SaveChanges();
+
+                //logical delete (NOT physically removed form the database. usually a flag of some sort (discontinued) is on the record)
+                //instead of a .Remove, an update is done
+                var existing = context.Products.Find(productid);
+                existing.Discontinued = true;
+                context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                return context.SaveChanges();
+            }
+
+
+        }
         #endregion
     }
 }
